@@ -3,7 +3,8 @@
 //!-----IMPORTS-----!
 const initSql = require('sql.js');
 
-const SQL = await initSql({
+// Found on DOCS, I wouldnt have know what is wrong
+const SQL = initSql({
     locateFile: file => `https://sql.js.org/dist${file}`
 });
 
