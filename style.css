@@ -1,2 +1,48 @@
-background: rgb(2,0,36);
-background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(206,3,207,1) 22%, rgba(0,212,255,1) 100%);
+/*
+Took the gradient from google, I'm not a css master nor is this a website based project, its all extra. The part that I truly code 
+is the python backend :)
+*/
+.css-selector {
+    background: linear-gradient(135deg, #bc1cda, #b32c39, #1fa2cf, #88cf1f, #5e620c);
+    background-size: 5000% 5000%;
+
+    -webkit-animation: gradient 22s ease infinite;
+    -moz-animation: gradient 22s ease infinite;
+    -o-animation: gradient 22s ease infinite;
+    animation: gradient 22s ease infinite;
+}
+
+@-webkit-keyframes gradient {
+    0%{background-position:57% 0%}
+    50%{background-position:44% 100%}
+    100%{background-position:57% 0%}
+}
+@-moz-keyframes gradient {
+    0%{background-position:57% 0%}
+    50%{background-position:44% 100%}
+    100%{background-position:57% 0%}
+}
+@-o-keyframes gradient {
+    0%{background-position:57% 0%}
+    50%{background-position:44% 100%}
+    100%{background-position:57% 0%}
+}
+@keyframes gradient {
+    0%{background-position:57% 0%}
+    50%{background-position:44% 100%}
+    100%{background-position:57% 0%}
+}
+
+.btn {
+    background-color: transparent;
+    height: 100%;
+    width: 100%;
+    border: 0px solid;
+    font-size: xx-large;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    padding: 375px 0;
+
+}
