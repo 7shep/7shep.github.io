@@ -1,1 +1,1 @@
-Grade 11 TEJ4M Coding Project in JavaScript
+Grade 11 TEJ4M Coding Project in HTML, CSS and Python :)
