@@ -1,19 +1,13 @@
 // Welcome to Shep's Backend Project. Super Organzied. Everything Commented. Super Readable.
 
 //!-----IMPORTS-----!
-const sql = require('mysql2');
 
-//!-----Making the connection to the DB-----!
-const con = sql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    database: 'test'
-  });
 
 //!-----Collecting the User Data to be stored in the future-----!
 const userInfo = document.getElementById('user-info');
+const purchaseButton = document.getElementById('submit');
 
-emailField.addEventListener("click", (e) =>{
+purchaseButton.addEventListener("click", (e) =>{
     //Prevents the page from autoreloading
     e.preventDefault();
     const email = userInfo.email.value;
@@ -23,5 +17,7 @@ emailField.addEventListener("click", (e) =>{
     const cvv = userInfo.cvv.value;
     const expireDate = userInfo.exp.value;
 
+
+    console.log(email);
 });
 
