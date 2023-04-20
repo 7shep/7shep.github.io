@@ -5,7 +5,6 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 
-
 //!-----Constants-----!
 const data = express();
 
@@ -46,7 +45,7 @@ data.post('/submit-info', (req, res) => {
 });
 
 //Listens to port 5500, where my webserver is hosted
-data.listen(5500, (email) =>{
+data.listen(5500, (name) =>{
     console.log("Server started on port 5500");
-    console.log(email);
+    console.log(name);
 })
