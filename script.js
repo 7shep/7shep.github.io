@@ -6,6 +6,8 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const path = require('path');
 
+var url = "mongodb:127.0.0.1:5500"
+
 const data = express();
 data.use(bodyParser.urlencoded({extended: true}));
 
@@ -23,4 +25,4 @@ const info = mongoose.model('Information: ', userSchema)
 
 data.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'home.html'));
-})
+});
