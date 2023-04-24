@@ -1,49 +1,26 @@
 // Welcome to Shep's Backend Project. Super Organzied. Everything Commented. Super Readable.
 
 //!-----Imports-----!
-const mongoose = require('mongoose');
+const express = require('express');
 const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
+const path = require('path');
 
-//!-----Constants-----!
 const data = express();
-const port = process.env.PORT || 5500;
-mongoose.connect('mongodb://localhost/myapp', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+data.use(bodyParser.urlencoded({extended: true}));
 
-const formSchema = new mongoose.Schema({
-  phone: String,
-  email: String,
-  ccnum: String,
-  cvv: String,
-  exp: String,
-});
-
-const Form = mongoose.model('Form', formSchema);
-
-data.use(bodyParser.json());
-
-data.post('/submit-form', (req, res) => {
-  const form = new Form(req.body);
-
-  form.save((err, form) => {
-    if (err) {
-      console.error(err);
-      res.status(500).send('Error saving form data');
-    } else {
-      res.send('Form data saved successfully');
-    }
+const userSchema = new mongoose.Schema({
+    email: String,
+    phone: Number,
+    ccnum: Number,
+    cvv: Number,
+    exp: String
   });
-});
 
-data.listen(port, () => {
-  console.log(`Server running on port ${port}`);
-});
+mongoose.connect('127.0.0.1:5500', {useNewUrlParser: true, useUnifiedTopology: true});
 
-data.connect((err, client) =>{
-    if (err) {
-        console.error(err);
-        return;
-    }
+const info = mongoose.model('Information: ', userSchema)
+
+data.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'home.html'));
 })
