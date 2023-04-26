@@ -35,7 +35,7 @@ data.get('/test', (req, res) => {
   console.log('test');
 })
 
-data.post('/submit-form', (req, res) => {
+data.post('/submit-form', (req, res, email) => {
   console.log('here');
   res.sendFile(path.join(__dirname, 'home.html'));
 });
