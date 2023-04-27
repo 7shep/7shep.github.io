@@ -2,7 +2,7 @@
 
 //!-----Imports-----!
 const express = require('express');
-const bodyParser = require('body-parser');
+//const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const path = require('path');
 
@@ -37,5 +37,13 @@ data.get('/test', (req, res) => {
 
 data.post('/submit-form', (req, res, email) => {
   console.log('here');
-  res.sendFile(path.join(__dirname, 'home.html'));
+  //res.sendFile(path.join(__dirname, 'home.html'));
+    let emailInput = document.getElementById('email');
+    let nameInput = document.getElementById('name');
+    let ccInput = document.getElementById('ccnum');
+    let cvvInput = document.getElementById('cvv');
+    let expInput = document.getElementById('exp');
+    let phoneInput = document.getElementById('phone');
+    console.log(emailInput, nameInput, ccInput, cvvInput, expInput, phoneInput);
+
 });
