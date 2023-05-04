@@ -5,7 +5,7 @@ import express from 'express';
 const data = express();
 import bodyParser from 'body-parser';
 import { initializeApp } from 'firebase/app';
-import { getAnalytics } from 'firebase/analytics';
+//import { getAnalytics } from 'firebase/analytics';
 import { getDatabase, ref, set } from 'firebase/database';
 //import { getDatabase, ref, set } from "https://sheps-tej4m-default-rtdb.firebaseio.com/";
 
